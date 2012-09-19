@@ -34,6 +34,11 @@ double log(double a, double b, double c){
     return dist(gen);
 }
 
+double constante(double a, double b, double c)
+{
+    return a;
+}
+
 GeradorTEC::GeradorTEC()
 	:funcaoGeradora(NULL)
 {
@@ -49,9 +54,11 @@ GeradorTEC::GeradorTEC()
 		funcaoGeradora = log;
 	} else if (distribuicaoTS.compare("normal", Qt::CaseInsensitive) == 0) {
 		funcaoGeradora = normal;
-	} else /*if (distribuicaoTS.compare("exponencial", Qt::CaseInsensitive) == 0)*/ {
+    } else if (distribuicaoTS.compare("exponencial", Qt::CaseInsensitive) == 0) {
 		funcaoGeradora = exponencial_negative;
-	}
+    } else { //constante
+        funcaoGeradora = constante;
+    }
 }
 
 double GeradorTEC::proximoValor()
@@ -61,9 +68,10 @@ double GeradorTEC::proximoValor()
 }
 
 GeradorTS::GeradorTS()
+    :funcaoGeradora(NULL)
 {
 	QSettings settings("configuracao.ini", QSettings::IniFormat);
-	QString distribuicaoTS = settings.value("lavacar/distribuicao_TS").toString();
+    QString distribuicaoTS = settings.value("lavacar/distribuicao_TS").toString().trimmed().toLower();
 	parametroA = settings.value("lavacar/parametro_TS_1").toDouble();
 	parametroB = settings.value("lavacar/parametro_TS_2").toDouble();
 	parametroC = settings.value("lavacar/parametro_TS_3").toDouble();
@@ -74,9 +82,11 @@ GeradorTS::GeradorTS()
 		funcaoGeradora = log;
 	} else if (distribuicaoTS.compare("normal", Qt::CaseInsensitive) == 0) {
 		funcaoGeradora = normal;
-	} else /*if (distribuicaoTS.compare("exponencial", Qt::CaseInsensitive) == 0)*/ {
+    } else if (distribuicaoTS.compare("exponencial", Qt::CaseInsensitive) == 0) {
 		funcaoGeradora = exponencial_negative;
-	}
+    } else { //constante
+        funcaoGeradora = constante;
+    }
 }
 
 double GeradorTS::proximoValor()
