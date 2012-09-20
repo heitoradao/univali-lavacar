@@ -1,5 +1,6 @@
 #include "gerador.h"
 #include <QSettings>
+#include <QTextStream>
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
 #include <boost/random/exponential_distribution.hpp>
@@ -42,11 +43,15 @@ double constante(double a, double b, double c)
 GeradorTEC::GeradorTEC()
 	:funcaoGeradora(NULL)
 {
+	QTextStream output(stdout, QIODevice::WriteOnly);
+	output << "lendo configuracao.ini\n";
 	QSettings settings("configuracao.ini", QSettings::IniFormat);
 	QString distribuicaoTS = settings.value("lavacar/distribuicao_TEC").toString();
+	output << "distribuicaoTs = " << distribuicaoTS << "\n";
 	parametroA = settings.value("lavacar/parametro_TEC_1").toDouble();
 	parametroB = settings.value("lavacar/parametro_TEC_2").toDouble();
 	parametroC = settings.value("lavacar/parametro_TEC_3").toDouble();
+	output << QString("A = %1\nB = %2\nC = %3\n").arg(parametroA).arg(parametroB).arg(parametroC);
 
 	if (distribuicaoTS.compare("triangular", Qt::CaseInsensitive) == 0) {
 		funcaoGeradora = triangle;
