@@ -1,13 +1,16 @@
-#include <QCoreApplication>
+#include <QApplication>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QList>
+#include <QSettings>
 #include <QTextStream>
 #include <QTimer>
-#include <QList>
 #include "lavacao.h"
-#include <QSettings>
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication app(argc, argv);
+    QApplication app(argc, argv);
     QTextStream output(stdout, QIODevice::WriteOnly);
     QTextStream input(stdin, QIODevice::ReadOnly);
 
@@ -16,10 +19,14 @@ int main(int argc, char *argv[])
     QString entrada;
     entrada = input.readLine();
 
+	QGraphicsScene scene;
+	MainWindow mainWindow(0, &scene);
+	mainWindow.show();
+
     QTimer timer;
-	Lavacao lavacao;
+	Lavacao lavacao(0, &scene);
     QObject::connect(&timer, SIGNAL(timeout()), &lavacao, SLOT(encerraSimulacao()));
-	QObject::connect(&lavacao, SIGNAL(quit()), &app, SLOT(quit()));
+	//QObject::connect(&lavacao, SIGNAL(quit()), &app, SLOT(quit()));
 
     timer.start(entrada.toInt() * 1000);
 

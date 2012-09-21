@@ -1,9 +1,12 @@
 #include "lavacao.h"
+#include <QPainter>
 #include <QTextStream>
 #include <QTextCodec>
+#include <QGraphicsScene>
 
-Lavacao::Lavacao(QObject *parent)
+Lavacao::Lavacao(QObject *parent, QGraphicsScene *scene)
     :QObject(parent)
+	,QGraphicsItem(NULL, scene)
     ,limiteDaFila(4)
 {
     // tratar os eventos gerados pela porta
@@ -59,4 +62,14 @@ void Lavacao::encerraSimulacao()
 {
 	mostraRelatorio();
 	emit quit();
+}
+
+QRectF Lavacao::boundingRect() const
+{
+	return QRectF(0, 0, 480, 480);
+}
+
+void Lavacao::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+	painter-> drawLine(20, 30, 40, 60);
 }

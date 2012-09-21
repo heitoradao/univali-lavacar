@@ -8,8 +8,9 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
-HEADERS += atendente.h carro.h config.h gerador.h lavacao.h porta.h \
-    dispose.h
+HEADERS += atendente.h carro.h config.h gerador.h lavacao.h porta.h dispose.h \
+    mainwindow.h \
+    configuracaoinicialdialog.h
 SOURCES += atendente.cpp \
            carro.cpp \
            config.cpp \
@@ -17,4 +18,10 @@ SOURCES += atendente.cpp \
            lavacao.cpp \
            main.cpp \
            porta.cpp \
-    dispose.cpp
+		   dispose.cpp \
+    mainwindow.cpp \
+    configuracaoinicialdialog.cpp
+
+FORMS += \
+    mainwindow.ui \
+    configuracaoinicialdialog.ui
