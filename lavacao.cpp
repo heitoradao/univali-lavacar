@@ -8,13 +8,16 @@ Lavacao::Lavacao(QObject *parent, QGraphicsScene *scene)
     :QObject(parent)
 	,QGraphicsItem(NULL, scene)
     ,limiteDaFila(4)
+	,porta(0, this)
+	,atendente(0, this)
 {
     // tratar os eventos gerados pela porta
     // insere o carro na fila
     // faz o atendente trabalhar
     QObject::connect(&porta, SIGNAL(eventoEntraCarro(Carro*)), this, SLOT(insereCarrosNaFila(Carro*)));
     QObject::connect(&atendente, SIGNAL(terminouDeLavarCarro(Carro*)), this, SLOT(despachaCarro(Carro*)));
-
+	porta.setPos(24, 20);
+	atendente.setPos(128, 20);
 }
 
 void Lavacao::insereCarrosNaFila(Carro* carro)
@@ -66,10 +69,12 @@ void Lavacao::encerraSimulacao()
 
 QRectF Lavacao::boundingRect() const
 {
-	return QRectF(0, 0, 480, 480);
+	return QRectF(0, 0, 400, 400);
 }
 
 void Lavacao::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-	painter-> drawLine(20, 30, 40, 60);
+	//painter-> drawLine(20, 30, 40, 60);
+	painter->drawRect(boundingRect());
+	painter->drawText(boundingRect(), trUtf8("Lavação"));
 }

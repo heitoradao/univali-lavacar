@@ -5,16 +5,19 @@
 #include <QTimer>
 #include "carro.h"
 #include <QTextStream>
+#include <QGraphicsItem>
 #include "gerador.h"
 
-class Atendente : public QObject
+class Atendente : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit Atendente(QObject *parent = 0);
+    explicit Atendente(QObject *parent = 0, QGraphicsItem *parentGI = 0);
     bool estaDesocupado();
     void atendeCarro(Carro* carro);
 	void mostraRelatorio(QTextStream &output);
+	virtual QRectF boundingRect() const;
+	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 signals:
     void terminouDeLavarCarro(Carro*);

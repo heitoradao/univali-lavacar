@@ -1,8 +1,10 @@
 #include "atendente.h"
 #include "gerador.h"
+#include <QPainter>
 
-Atendente::Atendente(QObject *parent)
+Atendente::Atendente(QObject *parent, QGraphicsItem *parentGI)
     :QObject(parent)
+	,QGraphicsItem(parentGI)
     ,carroSendoAtendido(NULL)
 	,numCarrosAtendidos(0)
 	,somaTempoAtendimento(0)
@@ -45,4 +47,16 @@ void Atendente::mostraRelatorio(QTextStream &output)
     output << "Numero de carros atendidos: " << numCarrosAtendidos << "\n";
 	output << "Tempo médio de atendimenot: " << ("XXXXX") << "\n";
 	output.flush();
+}
+
+QRectF Atendente::boundingRect() const
+{
+	return QRectF(0, 0, 64, 64);
+}
+
+void Atendente::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+	//painter-> drawLine(20, 30, 40, 60);
+	painter->drawRect(boundingRect());
+	painter->drawText(boundingRect(), trUtf8("Atendente"));
 }

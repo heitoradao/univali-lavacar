@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'porta.h'
 **
-** Created: Wed Sep 19 14:26:55 2012
+** Created: Fri Sep 21 15:24:34 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -80,6 +80,8 @@ void *Porta::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_Porta))
         return static_cast<void*>(const_cast< Porta*>(this));
+    if (!strcmp(_clname, "QGraphicsItem"))
+        return static_cast< QGraphicsItem*>(const_cast< Porta*>(this));
     return QObject::qt_metacast(_clname);
 }
 
