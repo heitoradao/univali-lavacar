@@ -40,62 +40,31 @@ double constante(double a, double b, double c)
     return a;
 }
 
-GeradorTEC::GeradorTEC()
-	:funcaoGeradora(NULL)
-{
-	QTextStream output(stdout, QIODevice::WriteOnly);
-	output << "lendo configuracao.ini\n";
-	QSettings settings("configuracao.ini", QSettings::IniFormat);
-	QString distribuicaoTS = settings.value("lavacar/distribuicao_TEC").toString();
-	output << "distribuicaoTs = " << distribuicaoTS << "\n";
-	parametroA = settings.value("lavacar/parametro_TEC_1").toDouble();
-	parametroB = settings.value("lavacar/parametro_TEC_2").toDouble();
-	parametroC = settings.value("lavacar/parametro_TEC_3").toDouble();
-	output << QString("A = %1\nB = %2\nC = %3\n").arg(parametroA).arg(parametroB).arg(parametroC);
+double (*funcoes[6])(double, double, double) =
+    {constante, exponencial_negative, log,normal, triangle, uniform};
 
-	if (distribuicaoTS.compare("triangular", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = triangle;
-	} else if (distribuicaoTS.compare("log", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = log;
-	} else if (distribuicaoTS.compare("normal", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = normal;
-    } else if (distribuicaoTS.compare("exponencial", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = exponencial_negative;
-    } else { //constante
-        funcaoGeradora = constante;
-    }
+GeradorTEC::GeradorTEC(Config config)
+	:funcaoGeradora(NULL)
+    ,config(config)
+{
+    funcaoGeradora = funcoes[config.distribuicaoTEC];
 }
 
 double GeradorTEC::proximoValor()
 {
 	Q_ASSERT(funcaoGeradora);
-	return funcaoGeradora(parametroA, parametroB, parametroC);
+    return funcaoGeradora(config.parametroATEC, config.parametroBTEC, config.parametroCTEC);
 }
 
-GeradorTS::GeradorTS()
+GeradorTS::GeradorTS(Config config)
     :funcaoGeradora(NULL)
+    ,config(config)
 {
-	QSettings settings("configuracao.ini", QSettings::IniFormat);
-    QString distribuicaoTS = settings.value("lavacar/distribuicao_TS").toString().trimmed().toLower();
-	parametroA = settings.value("lavacar/parametro_TS_1").toDouble();
-	parametroB = settings.value("lavacar/parametro_TS_2").toDouble();
-	parametroC = settings.value("lavacar/parametro_TS_3").toDouble();
-
-	if (distribuicaoTS.compare("triangular", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = triangle;
-	} else if (distribuicaoTS.compare("log", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = log;
-	} else if (distribuicaoTS.compare("normal", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = normal;
-    } else if (distribuicaoTS.compare("exponencial", Qt::CaseInsensitive) == 0) {
-		funcaoGeradora = exponencial_negative;
-    } else { //constante
-        funcaoGeradora = constante;
-    }
+    funcaoGeradora = funcoes[config.distribuicaoTS];
 }
 
 double GeradorTS::proximoValor()
 {
 	Q_ASSERT(funcaoGeradora);
-	return funcaoGeradora(parametroA, parametroB, parametroC);
+    return funcaoGeradora(config.parametroATS, config.parametroBTS, config.parametroCTS);
 }

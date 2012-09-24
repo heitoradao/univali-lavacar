@@ -2,6 +2,7 @@
 #define CONFIGURACAOINICIALDIALOG_H
 
 #include <QDialog>
+#include <config.h>
 
 namespace Ui {
 class ConfiguracaoInicialDialog;
@@ -9,14 +10,19 @@ class ConfiguracaoInicialDialog;
 
 class ConfiguracaoInicialDialog : public QDialog
 {
-	Q_OBJECT
-	
+    Q_OBJECT    
 public:
-	explicit ConfiguracaoInicialDialog(QWidget *parent = 0);
-	~ConfiguracaoInicialDialog();
-	
+    explicit ConfiguracaoInicialDialog(QWidget *parent = 0);
+    ~ConfiguracaoInicialDialog();
+    static Config getConfigInicial();
+    virtual void done(int r);
+
+    
 private:
-	Ui::ConfiguracaoInicialDialog *ui;
+    Ui::ConfiguracaoInicialDialog *ui;
+    void leInformacoesDoArquivo();
+    void gravaInformacoesNoArquivo();
+    static Config config;
 };
 
 #endif // CONFIGURACAOINICIALDIALOG_H

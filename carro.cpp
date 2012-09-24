@@ -1,14 +1,25 @@
 #include "carro.h"
 
-Carro::Carro(double tempoChegada, QObject *parent)
+Carro::Carro(QObject *parent)
     :QObject(parent)
-    ,tempoChegada(tempoChegada)
+    ,estado(ESTADO_SUJO)
 {
+    tempoSistema.start();
+    tempoAtendimento.start();
 }
 
-void Carro::lava(double tempoAtendimento)
+void Carro::limpa()
 {
-    // gera numero aleatorio para tempo de atendimento
-    emit termino(tempoAtendimento + 15);
+    estado = ESTADO_LIMPO;
+    tempoAtendimento.start();
 }
 
+int Carro::getTempoAtendimento()
+{
+    return tempoAtendimento.elapsed()/1000;
+}
+
+int Carro::getTempoSistema()
+{
+    return tempoSistema.elapsed()/1000;
+}

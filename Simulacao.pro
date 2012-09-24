@@ -13,7 +13,6 @@ HEADERS += atendente.h carro.h config.h gerador.h lavacao.h porta.h dispose.h \
     configuracaoinicialdialog.h
 SOURCES += atendente.cpp \
            carro.cpp \
-           config.cpp \
            gerador.cpp \
            lavacao.cpp \
            main.cpp \

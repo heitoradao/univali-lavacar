@@ -1,28 +1,26 @@
 #ifndef GERADOR_H_INCLUDED
 #define GERADOR_H_INCLUDED
 
+#include "config.h"
+
 class GeradorTEC
 {
 public:
     double proximoValor();
-    GeradorTEC();
+    GeradorTEC(Config config);
 private:
 	double (*funcaoGeradora)(double, double, double);
-	double parametroA;
-	double parametroB;
-	double parametroC;
+    Config config;
 };
 
 class GeradorTS
 {
 public:
 	double proximoValor();
-	GeradorTS();
+    GeradorTS(Config config);
 private:
 	double (*funcaoGeradora)(double, double, double);
-	double parametroA;
-	double parametroB;
-	double parametroC;
+    Config config;
 };
 
 #endif // GERADOR_H_INCLUDED
