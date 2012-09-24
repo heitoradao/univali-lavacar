@@ -6,93 +6,321 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>287</width>
-    <height>148</height>
+    <width>492</width>
+    <height>270</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Configuracao</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <layout class="QFormLayout" name="formLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelTempoSimulacao">
-       <property name="text">
-        <string>tempo de simulacao</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QSpinBox" name="spinBox">
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::UpDownArrows</enum>
-       </property>
-       <property name="suffix">
-        <string> s</string>
-       </property>
-       <property name="maximum">
-        <number>999999</number>
-       </property>
-       <property name="value">
-        <number>15</number>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Tipo de distribuicao TEC</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="comboBox_2"/>
-     </item>
-    </layout>
-   </item>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="QGroupBox" name="groupBoxTs">
+       <property name="title">
+        <string>T&amp;S</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelTsDistribuicao">
+          <property name="text">
+           <string>distribuição</string>
+          </property>
+          <property name="buddy">
+           <cstring>comboBoxTsDistribuicao</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelTsParametro1">
+          <property name="text">
+           <string>parametro 1</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTsParametro1</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="spinBoxTsParametro1"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="labellabelTsParametro2">
+          <property name="text">
+           <string>parametro 2</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTsParametro2</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSpinBox" name="spinBoxTsParametro2"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="labelTsParametro3">
+          <property name="text">
+           <string>parametro 3</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTsParametro3</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QSpinBox" name="spinBoxTsParametro3"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="comboBoxTsDistribuicao">
+          <item>
+           <property name="text">
+            <string>constante</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>exponencial negativa</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>log</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>normal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>triangular</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>uniforme</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Ok</string>
+      <widget class="QGroupBox" name="groupBoxTec">
+       <property name="title">
+        <string>T&amp;EC</string>
        </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelTecDistribuicao">
+          <property name="text">
+           <string>distribuicao</string>
+          </property>
+          <property name="buddy">
+           <cstring>comboBoxTecDistribuicao</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="comboBoxTecDistribuicao">
+          <item>
+           <property name="text">
+            <string>constante</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>exponencial negativa</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>log</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>normal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>triangular</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>uniforme</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelTecParametro1">
+          <property name="text">
+           <string>parametro 1</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTecParametro1</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="spinBoxTecParametro1"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="labelTecParametro2">
+          <property name="text">
+           <string>parametro 2</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTecParametro2</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSpinBox" name="spinBoxTecParametro2"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="labelTecParametro3">
+          <property name="text">
+           <string>parametro 3</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTecParametro3</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QSpinBox" name="spinBoxTecParametro3"/>
+        </item>
+       </layout>
       </widget>
      </item>
     </layout>
    </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBoxControleTempo">
+       <property name="title">
+        <string>Controle de tempo</string>
+       </property>
+       <layout class="QFormLayout" name="formLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelTempoSimulacao">
+          <property name="text">
+           <string>&amp;tempo de simulação</string>
+          </property>
+          <property name="buddy">
+           <cstring>spinBoxTempoSimulacao</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="spinBoxTempoSimulacao">
+          <property name="suffix">
+           <string> s</string>
+          </property>
+          <property name="maximum">
+           <number>9999999</number>
+          </property>
+          <property name="value">
+           <number>30</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Semente</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QRadioButton" name="radioButtonAleatoria">
+          <property name="text">
+           <string>aleatória</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButtonDeterministica">
+          <property name="text">
+           <string>determinística</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBoxTsDistribuicao</tabstop>
+  <tabstop>spinBoxTsParametro1</tabstop>
+  <tabstop>spinBoxTsParametro2</tabstop>
+  <tabstop>spinBoxTsParametro3</tabstop>
+  <tabstop>comboBoxTecDistribuicao</tabstop>
+  <tabstop>spinBoxTecParametro1</tabstop>
+  <tabstop>spinBoxTecParametro2</tabstop>
+  <tabstop>spinBoxTecParametro3</tabstop>
+  <tabstop>spinBoxTempoSimulacao</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ConfiguracaoInicialDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>252</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ConfiguracaoInicialDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

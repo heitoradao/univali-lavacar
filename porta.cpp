@@ -3,30 +3,46 @@
 #include <QTextStream>
 #include <QPainter>
 
-Porta::Porta(QObject *parent, QGraphicsItem *parentGI)
+Porta::Porta(QTextStream *output, QObject *parent, QGraphicsItem *parentGI, Config config)
 	:QObject(parent)
 	,QGraphicsItem(parentGI)
+    ,ativa(true)
 	,numCarrosGerados(0)
+    ,output(output)
+    ,config(config)
 {
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(geraCarro()));
+    gerador = new GeradorTEC(config);
 
     // Usar numero aleatorio
     timer.singleShot(1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
 }
 
-void Porta::geraCarro()
+Porta::~Porta()
 {
-	++numCarrosGerados;
-    QTextStream output(stdout, QIODevice::WriteOnly);
-    output << "entrou carro\n";
-    output.flush();
-    emit eventoEntraCarro(new Carro(1000));
-    timer.singleShot(1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
+    delete gerador;
 }
 
-void Porta::mostraRelatorio(QTextStream &output)
+void Porta::geraCarro()
 {
-	output << "Numero de carros que entraram no sistema: " << numCarrosGerados << "\n";
+    Q_ASSERT(output);
+    (*output) << "entrou carro\n";
+    output->flush();
+    ++numCarrosGerados;
+    emit eventoEntraCarro(new Carro);
+    if (ativa) timer.singleShot(gerador->proximoValor() * 1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
+    update(boundingRect());
+}
+
+void Porta::encerraSimulacao()
+{
+    ativa = false;
+    timer.stop();
+}
+
+void Porta::mostraRelatorio()
+{
+    (*output) << "Numero de carros que entraram no sistema: " << numCarrosGerados << "\n";
 }
 
 QRectF Porta::boundingRect() const
@@ -37,5 +53,6 @@ QRectF Porta::boundingRect() const
 void Porta::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	painter->drawRect(this->boundingRect());
-	painter->drawText(boundingRect(), "Porta");
+    painter->drawText(QPointF(0,12), "Porta");
+    painter->drawText(QPointF(0,24), QString("c: %1").arg(numCarrosGerados));
 }

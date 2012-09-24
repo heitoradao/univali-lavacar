@@ -1,22 +1,24 @@
 #ifndef LAVACAO_H
 #define LAVACAO_H
 
+#include <QGraphicsItem>
+#include <QMutex>
 #include <QObject>
 #include <QQueue>
-#include <QGraphicsItem>
 #include "carro.h"
 #include "porta.h"
 #include "atendente.h"
 #include "dispose.h"
+#include "config.h"
 
 class Lavacao : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit Lavacao(QObject *parent = 0, QGraphicsScene *scene = 0);
-    Porta porta;
-    Atendente atendente;
-	Dispose dispose;
+    explicit Lavacao(QTextStream *output, Config config, QObject *parent, QGraphicsScene *scene);
+    Porta *porta;
+    Atendente *atendente;
+    Dispose *dispose;
     unsigned int limiteDaFila;
 	void mostraRelatorio();
 	virtual QRectF boundingRect() const;
@@ -27,11 +29,13 @@ public slots:
     void despachaCarro(Carro* carro);
 	void encerraSimulacao();
 
-signals:
-	void quit();
-
 private:
     QQueue<Carro*> fila;
+    Config config;
+    QTextStream *output;
+    QMutex mutexChegouCarro;
+    QTimer timerTempoSimulacao;
+    bool ativa;
 };
 
 #endif // LAVACAO_H

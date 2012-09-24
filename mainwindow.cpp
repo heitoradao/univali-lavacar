@@ -4,16 +4,21 @@
 
 MainWindow::MainWindow(QWidget *parent)
 	:QMainWindow(parent)
+    ,output(stdout, QIODevice::WriteOnly)
 	,ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
-	ConfiguracaoInicialDialog dialog;
-	dialog.exec();
+    Config config = ConfiguracaoInicialDialog::getConfigInicial();
 	ui->graphicsView->setScene(&scene);
-	lavacao = new Lavacao(this, &scene);
+    lavacao = new Lavacao(&output, config, this, &scene);
 }
 
 MainWindow::~MainWindow()
 {
 	delete ui;
+}
+
+void MainWindow::on_actionStop_triggered()
+{
+    lavacao->encerraSimulacao();
 }

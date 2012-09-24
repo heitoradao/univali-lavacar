@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'lavacao.h'
 **
-** Created: Fri Sep 21 15:25:48 2012
+** Created: Mon Sep 24 02:04:29 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,23 @@ static const uint qt_meta_data_Lavacao[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
-
- // signals: signature, parameters, type, tag, flags
-       9,    8,    8,    8, 0x05,
+       0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      22,   16,    8,    8, 0x0a,
-      49,   16,    8,    8, 0x0a,
-      71,    8,    8,    8, 0x0a,
+      15,    9,    8,    8, 0x0a,
+      42,    9,    8,    8, 0x0a,
+      64,    8,    8,    8, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Lavacao[] = {
-    "Lavacao\0\0quit()\0carro\0insereCarrosNaFila(Carro*)\0"
+    "Lavacao\0\0carro\0insereCarrosNaFila(Carro*)\0"
     "despachaCarro(Carro*)\0encerraSimulacao()\0"
 };
 
@@ -52,10 +49,9 @@ void Lavacao::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         Q_ASSERT(staticMetaObject.cast(_o));
         Lavacao *_t = static_cast<Lavacao *>(_o);
         switch (_id) {
-        case 0: _t->quit(); break;
-        case 1: _t->insereCarrosNaFila((*reinterpret_cast< Carro*(*)>(_a[1]))); break;
-        case 2: _t->despachaCarro((*reinterpret_cast< Carro*(*)>(_a[1]))); break;
-        case 3: _t->encerraSimulacao(); break;
+        case 0: _t->insereCarrosNaFila((*reinterpret_cast< Carro*(*)>(_a[1]))); break;
+        case 1: _t->despachaCarro((*reinterpret_cast< Carro*(*)>(_a[1]))); break;
+        case 2: _t->encerraSimulacao(); break;
         default: ;
         }
     }
@@ -95,16 +91,10 @@ int Lavacao::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 3;
     }
     return _id;
-}
-
-// SIGNAL 0
-void Lavacao::quit()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
 QT_END_MOC_NAMESPACE

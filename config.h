@@ -3,18 +3,47 @@
 
 #include <QString>
 
+enum TipoDistribuicao
+{
+    CONSTANTE,
+    EXPONENCIAL,
+    LOG,
+    NORMAL,
+    TRIANGULAR,
+    UNIFORME
+};
+
+enum TipoSemente
+{
+    SEMENTE_ALEATORIA,
+    SEMENTE_DETERMINISTICA
+};
+
 class Config
 {
 public:
-    static Config* getInstance();
-    double getTEC();
-    double getTS();
-    QString distribuicaoTS;
-    QString distribuicaoTEC;
+    Config()
+        :distribuicaoTS(CONSTANTE)
+        ,parametroATS(1)
+        ,parametroBTS(1)
+        ,parametroCTS(1)
+        ,distribuicaoTEC(CONSTANTE)
+        ,parametroATEC(1)
+        ,parametroBTEC(1)
+        ,parametroCTEC(1)
+    {}
+    TipoDistribuicao distribuicaoTS;
+    double parametroATS;
+    double parametroBTS;
+    double parametroCTS;
 
-private:
-    Config();
-    static Config* instance;
+    TipoDistribuicao distribuicaoTEC;
+    double parametroATEC;
+    double parametroBTEC;
+    double parametroCTEC;
+
+    int tempoSimulacao;
+    TipoSemente semente;
 };
 
 #endif // CONFIG_H

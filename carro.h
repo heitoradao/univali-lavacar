@@ -2,20 +2,26 @@
 #define CARRO_H
 
 #include <QObject>
+#include <QTime>
+
+enum EstadoCarro
+{
+    ESTADO_SUJO,
+    ESTADO_LIMPO
+};
 
 class Carro : public QObject
 {
     Q_OBJECT
 public:
-    explicit Carro(double tempoChegada, QObject *parent = 0);
-
-    double tempoChegada;
-    double tempoAtendimento;
-    void lava(double tempoAtendimento);
-
-signals:
-    void termino(double tempoAtendimento);
-
+    explicit Carro(QObject *parent = 0);
+    void limpa();
+    EstadoCarro estado;
+    int getTempoAtendimento();
+    int getTempoSistema();
+private:
+    QTime tempoAtendimento;
+    QTime tempoSistema;
 };
 
 #endif // CARRO_H

@@ -9,6 +9,7 @@ class MainWindow;
 #include <QMainWindow>
 #include "lavacao.h"
 #include <QGraphicsScene>
+#include <QTextStream>
 
 /*!
  * \brief The MainWindow class
@@ -21,10 +22,13 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 	
+private slots:
+    void on_actionStop_triggered();
+
 private:
 	Ui::MainWindow *ui;
-	QTimer timer;
 	Lavacao *lavacao;
+    QTextStream output;
 	QGraphicsScene scene;
 };
 

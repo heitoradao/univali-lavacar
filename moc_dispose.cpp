@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dispose.h'
 **
-** Created: Fri Sep 21 15:24:34 2012
+** Created: Sun Sep 23 22:40:27 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -68,6 +68,8 @@ void *Dispose::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_Dispose))
         return static_cast<void*>(const_cast< Dispose*>(this));
+    if (!strcmp(_clname, "QGraphicsItem"))
+        return static_cast< QGraphicsItem*>(const_cast< Dispose*>(this));
     return QObject::qt_metacast(_clname);
 }
 
