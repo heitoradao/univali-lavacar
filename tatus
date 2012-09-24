@@ -1,0 +1,53 @@
+commit 1b9c3b89f989741b48e06beb06a653f60c117c53
+Author: Heitor Adão Júnior <heitor@heitor.(none)>
+Date:   Fri Sep 21 15:35:32 2012 -0300
+
+    com representacao grafica para a lavacao, porta e atendente.
+
+commit f18c95a748c86d80a1479d9a01ecdc2584536aeb
+Author: Heitor Adão Júnior <heitor@heitor.(none)>
+Date:   Fri Sep 21 11:30:08 2012 -0300
+
+    adicionando interface grafica]
+
+commit 219408d21777f58f075e0d2a49c9c95ef0f9f1ed
+Author: Heitor Adão Júnior <heitor@heitor.(none)>
+Date:   Thu Sep 20 18:08:03 2012 -0300
+
+    gerador
+
+commit df7e3dc78738903de51abd52a2abff40281b330c
+Author: Heitor <heitor@heitor-netbook.(none)>
+Date:   Wed Sep 19 14:21:24 2012 -0300
+
+    gerador
+
+commit a1cc46a43040f3fda20d06b53f95fe411288811a
+Author: Heitor <heitor@heitor-netbook.(none)>
+Date:   Wed Sep 19 14:12:01 2012 -0300
+
+    modificacao no configuracao.ini e gerador.h e cpp
+
+commit 7c7eb035131008264e471b9a88e41ce3c8b012fb
+Author: Heitor Adão Júnior <heitor@heitor.(none)>
+Date:   Wed Sep 19 13:27:27 2012 -0300
+
+    adicionando arquivo de configuracao.
+
+commit a6e5849466c99389aff046424bdf8d11f28463b4
+Author: Heitor Adão Júnior <heitor@heitor.(none)>
+Date:   Wed Sep 19 13:25:33 2012 -0300
+
+    adicionando arquivo pro
+
+commit d25f0d2c59b78db5b10aa4e08300a4e91f1714e5
+Author: Heitor Adão Júnior <heitor@heitor.(none)>
+Date:   Wed Sep 19 13:19:42 2012 -0300
+
+    commit inicial.
+
+commit 4d0ec87b8ac0c72ad266fe39acb83d65647b584a
+Author: heitoradao <heitor.adao@gmail.com>
+Date:   Wed Sep 19 09:16:01 2012 -0700
+
+    Initial commit
