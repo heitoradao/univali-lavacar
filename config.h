@@ -13,12 +13,6 @@ enum TipoDistribuicao
     UNIFORME
 };
 
-enum TipoSemente
-{
-    SEMENTE_ALEATORIA,
-    SEMENTE_DETERMINISTICA
-};
-
 class Config
 {
 public:
@@ -31,6 +25,8 @@ public:
         ,parametroATEC(1)
         ,parametroBTEC(1)
         ,parametroCTEC(1)
+        ,filaLimitada(true)
+        ,limiteFila(4)
     {}
     TipoDistribuicao distribuicaoTS;
     double parametroATS;
@@ -42,8 +38,10 @@ public:
     double parametroBTEC;
     double parametroCTEC;
 
+    bool filaLimitada;
+    int limiteFila;
     int tempoSimulacao;
-    TipoSemente semente;
+    double rapidezAnimacao;
 };
 
 #endif // CONFIG_H

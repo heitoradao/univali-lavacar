@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Sep 23 23:10:15 2012
+** Created: Sun Sep 30 16:16:25 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,6 +27,7 @@ class Ui_MainWindow
 {
 public:
     QAction *actionStop;
+    QAction *actionSobre;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
     QGraphicsView *graphicsView;
@@ -39,6 +40,8 @@ public:
         MainWindow->resize(811, 225);
         actionStop = new QAction(MainWindow);
         actionStop->setObjectName(QString::fromUtf8("actionStop"));
+        actionSobre = new QAction(MainWindow);
+        actionSobre->setObjectName(QString::fromUtf8("actionSobre"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -54,6 +57,7 @@ public:
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         toolBar->addAction(actionStop);
+        toolBar->addAction(actionSobre);
 
         retranslateUi(MainWindow);
 
@@ -64,6 +68,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         actionStop->setText(QApplication::translate("MainWindow", "Stop", 0, QApplication::UnicodeUTF8));
+        actionSobre->setText(QApplication::translate("MainWindow", "sobre", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

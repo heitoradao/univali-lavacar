@@ -22,6 +22,7 @@ private:
     Ui::ConfiguracaoInicialDialog *ui;
     void leInformacoesDoArquivo();
     void gravaInformacoesNoArquivo();
+    bool camposValidos();
     static Config config;
 };
 

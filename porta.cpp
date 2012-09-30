@@ -30,7 +30,7 @@ void Porta::geraCarro()
     output->flush();
     ++numCarrosGerados;
     emit eventoEntraCarro(new Carro);
-    if (ativa) timer.singleShot(gerador->proximoValor() * 1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
+    if (ativa) timer.singleShot(config.rapidezAnimacao * gerador->proximoValor() * 1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
     update(boundingRect());
 }
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'configuracaoinicialdialog.ui'
 **
-** Created: Sun Sep 23 22:39:47 2012
+** Created: Sun Sep 30 16:16:25 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,15 +14,17 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCheckBox>
 #include <QtGui/QComboBox>
 #include <QtGui/QDialog>
 #include <QtGui/QDialogButtonBox>
 #include <QtGui/QFormLayout>
+#include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
+#include <QtGui/QSlider>
 #include <QtGui/QSpinBox>
 #include <QtGui/QVBoxLayout>
 
@@ -54,21 +56,22 @@ public:
     QLabel *labelTecParametro3;
     QSpinBox *spinBoxTecParametro3;
     QHBoxLayout *horizontalLayout_2;
-    QGroupBox *groupBoxControleTempo;
-    QFormLayout *formLayout_3;
+    QGroupBox *groupBoxAnimacao;
+    QGridLayout *gridLayout;
     QLabel *labelTempoSimulacao;
     QSpinBox *spinBoxTempoSimulacao;
-    QGroupBox *groupBox;
-    QVBoxLayout *verticalLayout;
-    QRadioButton *radioButtonAleatoria;
-    QRadioButton *radioButtonDeterministica;
+    QSlider *horizontalSlider;
+    QGroupBox *groupBoxFila;
+    QFormLayout *formLayout_4;
+    QCheckBox *checkBoxFilaLimitada;
+    QSpinBox *spinBoxLimiteFila;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *ConfiguracaoInicialDialog)
     {
         if (ConfiguracaoInicialDialog->objectName().isEmpty())
             ConfiguracaoInicialDialog->setObjectName(QString::fromUtf8("ConfiguracaoInicialDialog"));
-        ConfiguracaoInicialDialog->resize(492, 270);
+        ConfiguracaoInicialDialog->resize(492, 279);
         verticalLayout_2 = new QVBoxLayout(ConfiguracaoInicialDialog);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         horizontalLayout = new QHBoxLayout();
@@ -172,42 +175,55 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        groupBoxControleTempo = new QGroupBox(ConfiguracaoInicialDialog);
-        groupBoxControleTempo->setObjectName(QString::fromUtf8("groupBoxControleTempo"));
-        formLayout_3 = new QFormLayout(groupBoxControleTempo);
-        formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
-        labelTempoSimulacao = new QLabel(groupBoxControleTempo);
+        groupBoxAnimacao = new QGroupBox(ConfiguracaoInicialDialog);
+        groupBoxAnimacao->setObjectName(QString::fromUtf8("groupBoxAnimacao"));
+        gridLayout = new QGridLayout(groupBoxAnimacao);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        labelTempoSimulacao = new QLabel(groupBoxAnimacao);
         labelTempoSimulacao->setObjectName(QString::fromUtf8("labelTempoSimulacao"));
 
-        formLayout_3->setWidget(0, QFormLayout::LabelRole, labelTempoSimulacao);
+        gridLayout->addWidget(labelTempoSimulacao, 0, 0, 1, 1);
 
-        spinBoxTempoSimulacao = new QSpinBox(groupBoxControleTempo);
+        spinBoxTempoSimulacao = new QSpinBox(groupBoxAnimacao);
         spinBoxTempoSimulacao->setObjectName(QString::fromUtf8("spinBoxTempoSimulacao"));
         spinBoxTempoSimulacao->setMaximum(9999999);
         spinBoxTempoSimulacao->setValue(30);
 
-        formLayout_3->setWidget(0, QFormLayout::FieldRole, spinBoxTempoSimulacao);
+        gridLayout->addWidget(spinBoxTempoSimulacao, 0, 1, 1, 1);
+
+        horizontalSlider = new QSlider(groupBoxAnimacao);
+        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
+        horizontalSlider->setMinimum(1);
+        horizontalSlider->setMaximum(20);
+        horizontalSlider->setPageStep(1);
+        horizontalSlider->setValue(10);
+        horizontalSlider->setOrientation(Qt::Horizontal);
+        horizontalSlider->setTickPosition(QSlider::TicksBelow);
+        horizontalSlider->setTickInterval(10);
+
+        gridLayout->addWidget(horizontalSlider, 1, 0, 1, 2);
 
 
-        horizontalLayout_2->addWidget(groupBoxControleTempo);
+        horizontalLayout_2->addWidget(groupBoxAnimacao);
 
-        groupBox = new QGroupBox(ConfiguracaoInicialDialog);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        verticalLayout = new QVBoxLayout(groupBox);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        radioButtonAleatoria = new QRadioButton(groupBox);
-        radioButtonAleatoria->setObjectName(QString::fromUtf8("radioButtonAleatoria"));
+        groupBoxFila = new QGroupBox(ConfiguracaoInicialDialog);
+        groupBoxFila->setObjectName(QString::fromUtf8("groupBoxFila"));
+        formLayout_4 = new QFormLayout(groupBoxFila);
+        formLayout_4->setObjectName(QString::fromUtf8("formLayout_4"));
+        checkBoxFilaLimitada = new QCheckBox(groupBoxFila);
+        checkBoxFilaLimitada->setObjectName(QString::fromUtf8("checkBoxFilaLimitada"));
+        checkBoxFilaLimitada->setChecked(true);
 
-        verticalLayout->addWidget(radioButtonAleatoria);
+        formLayout_4->setWidget(0, QFormLayout::LabelRole, checkBoxFilaLimitada);
 
-        radioButtonDeterministica = new QRadioButton(groupBox);
-        radioButtonDeterministica->setObjectName(QString::fromUtf8("radioButtonDeterministica"));
-        radioButtonDeterministica->setChecked(true);
+        spinBoxLimiteFila = new QSpinBox(groupBoxFila);
+        spinBoxLimiteFila->setObjectName(QString::fromUtf8("spinBoxLimiteFila"));
+        spinBoxLimiteFila->setValue(4);
 
-        verticalLayout->addWidget(radioButtonDeterministica);
+        formLayout_4->setWidget(0, QFormLayout::FieldRole, spinBoxLimiteFila);
 
 
-        horizontalLayout_2->addWidget(groupBox);
+        horizontalLayout_2->addWidget(groupBoxFila);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -238,11 +254,14 @@ public:
         QWidget::setTabOrder(spinBoxTecParametro1, spinBoxTecParametro2);
         QWidget::setTabOrder(spinBoxTecParametro2, spinBoxTecParametro3);
         QWidget::setTabOrder(spinBoxTecParametro3, spinBoxTempoSimulacao);
-        QWidget::setTabOrder(spinBoxTempoSimulacao, buttonBox);
+        QWidget::setTabOrder(spinBoxTempoSimulacao, checkBoxFilaLimitada);
+        QWidget::setTabOrder(checkBoxFilaLimitada, spinBoxLimiteFila);
+        QWidget::setTabOrder(spinBoxLimiteFila, buttonBox);
 
         retranslateUi(ConfiguracaoInicialDialog);
         QObject::connect(buttonBox, SIGNAL(accepted()), ConfiguracaoInicialDialog, SLOT(accept()));
         QObject::connect(buttonBox, SIGNAL(rejected()), ConfiguracaoInicialDialog, SLOT(reject()));
+        QObject::connect(checkBoxFilaLimitada, SIGNAL(clicked(bool)), spinBoxLimiteFila, SLOT(setEnabled(bool)));
 
         QMetaObject::connectSlotsByName(ConfiguracaoInicialDialog);
     } // setupUi
@@ -278,12 +297,11 @@ public:
         labelTecParametro1->setText(QApplication::translate("ConfiguracaoInicialDialog", "parametro 1", 0, QApplication::UnicodeUTF8));
         labelTecParametro2->setText(QApplication::translate("ConfiguracaoInicialDialog", "parametro 2", 0, QApplication::UnicodeUTF8));
         labelTecParametro3->setText(QApplication::translate("ConfiguracaoInicialDialog", "parametro 3", 0, QApplication::UnicodeUTF8));
-        groupBoxControleTempo->setTitle(QApplication::translate("ConfiguracaoInicialDialog", "Controle de tempo", 0, QApplication::UnicodeUTF8));
+        groupBoxAnimacao->setTitle(QApplication::translate("ConfiguracaoInicialDialog", "Anima\303\247\303\243o", 0, QApplication::UnicodeUTF8));
         labelTempoSimulacao->setText(QApplication::translate("ConfiguracaoInicialDialog", "&tempo de simula\303\247\303\243o", 0, QApplication::UnicodeUTF8));
         spinBoxTempoSimulacao->setSuffix(QApplication::translate("ConfiguracaoInicialDialog", " s", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("ConfiguracaoInicialDialog", "Semente", 0, QApplication::UnicodeUTF8));
-        radioButtonAleatoria->setText(QApplication::translate("ConfiguracaoInicialDialog", "aleat\303\263ria", 0, QApplication::UnicodeUTF8));
-        radioButtonDeterministica->setText(QApplication::translate("ConfiguracaoInicialDialog", "determin\303\255stica", 0, QApplication::UnicodeUTF8));
+        groupBoxFila->setTitle(QApplication::translate("ConfiguracaoInicialDialog", "Fila", 0, QApplication::UnicodeUTF8));
+        checkBoxFilaLimitada->setText(QApplication::translate("ConfiguracaoInicialDialog", "fila limitada", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

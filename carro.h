@@ -6,8 +6,8 @@
 
 enum EstadoCarro
 {
-    ESTADO_SUJO,
-    ESTADO_LIMPO
+    EstadoSujo,
+    EstadoLimpo
 };
 
 class Carro : public QObject

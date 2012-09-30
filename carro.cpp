@@ -2,7 +2,7 @@
 
 Carro::Carro(QObject *parent)
     :QObject(parent)
-    ,estado(ESTADO_SUJO)
+    ,estado(EstadoSujo)
 {
     tempoSistema.start();
     tempoAtendimento.start();
@@ -10,7 +10,7 @@ Carro::Carro(QObject *parent)
 
 void Carro::limpa()
 {
-    estado = ESTADO_LIMPO;
+    estado = EstadoLimpo;
     tempoAtendimento.start();
 }
 

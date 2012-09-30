@@ -25,6 +25,8 @@ public:
 private slots:
     void on_actionStop_triggered();
 
+    void on_actionSobre_triggered();
+
 private:
 	Ui::MainWindow *ui;
 	Lavacao *lavacao;

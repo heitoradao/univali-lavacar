@@ -2,6 +2,7 @@
 #include "ui_configuracaoinicialdialog.h"
 #include "QSettings"
 #include <stdexcept>
+#include <QMessageBox>
 
 Config ConfiguracaoInicialDialog::config;
 
@@ -47,7 +48,16 @@ void ConfiguracaoInicialDialog::done(int r)
     config.parametroBTS = ui->spinBoxTsParametro2->value();
     config.parametroCTS = ui->spinBoxTsParametro3->value();
     config.tempoSimulacao = ui->spinBoxTempoSimulacao->value();
-    config.semente = (ui->radioButtonAleatoria->isChecked() ? SEMENTE_ALEATORIA : SEMENTE_DETERMINISTICA);
+
+    config.filaLimitada = ui->checkBoxFilaLimitada->isChecked();
+    config.limiteFila = ui->spinBoxLimiteFila->value();
+    config.rapidezAnimacao = ui->horizontalSlider->value() / 10.0;
+
+    if (!camposValidos()) {
+        QMessageBox::critical(this, "", trUtf8("os valores dos campos estão inválidos.\n"
+                                               "As parametros 1, 2 e 3 precisam estar em ordem crescente."));
+        return;
+    }
     QDialog::done(r);
 }
 
@@ -144,4 +154,17 @@ void ConfiguracaoInicialDialog::gravaInformacoesNoArquivo()
     settings.setValue("parametro_TS_3", config.parametroCTS);
     settings.setValue("tempo_simulacao", config.tempoSimulacao);
     settings.endGroup();
+}
+
+bool ConfiguracaoInicialDialog::camposValidos()
+{
+    if (config.parametroATEC > config.parametroBTEC ||
+            config.parametroATEC > config.parametroCTEC ||
+            config.parametroBTEC > config.parametroCTEC ||
+            config.parametroATS > config.parametroBTS ||
+            config.parametroATS > config.parametroCTS ||
+            config.parametroBTS > config.parametroCTS) {
+        return false;
+    }
+    return true;
 }

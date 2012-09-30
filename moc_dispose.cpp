@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dispose.h'
 **
-** Created: Mon Sep 24 08:47:52 2012
+** Created: Sun Sep 30 16:59:26 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
