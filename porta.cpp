@@ -11,11 +11,12 @@ Porta::Porta(QTextStream *output, QObject *parent, QGraphicsItem *parentGI, Conf
     ,output(output)
     ,config(config)
 {
+    tempoReferencia.start();
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(geraCarro()));
     gerador = new GeradorTEC(config);
 
     // Usar numero aleatorio
-    timer.singleShot(1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
+    timer.singleShot(1000, this, SLOT(geraCarro()));
 }
 
 Porta::~Porta()
@@ -25,12 +26,12 @@ Porta::~Porta()
 
 void Porta::geraCarro()
 {
-    Q_ASSERT(output);
-    (*output) << "entrou carro\n";
-    output->flush();
     ++numCarrosGerados;
-    emit eventoEntraCarro(new Carro);
-    if (ativa) timer.singleShot(config.rapidezAnimacao * gerador->proximoValor() * 1000, this, SLOT(geraCarro())); // Usar funcao aleatoria
+    emit eventoEntraCarro(new Carro(tempoReferencia.elapsed() * config.rapidezAnimacao));
+    if (ativa) {
+        timer.singleShot(config.rapidezAnimacao * gerador->proximoValor() * 1000,
+                         this, SLOT(geraCarro()));
+    }
     update(boundingRect());
 }
 
@@ -41,7 +42,7 @@ void Porta::encerraSimulacao()
 }
 
 void Porta::mostraRelatorio()
-{
+{,
     (*output) << "Numero de carros que entraram no sistema: " << numCarrosGerados << "\n";
 }
 

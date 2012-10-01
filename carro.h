@@ -10,11 +10,14 @@ enum EstadoCarro
     EstadoLimpo
 };
 
+/*! \class Carro
+ * \brief Entidade principal.
+ */
 class Carro : public QObject
 {
     Q_OBJECT
 public:
-    explicit Carro(QObject *parent = 0);
+    explicit Carro(QTime momentoEntradaNoSistema, QObject *parent = 0);
     void limpa();
     EstadoCarro estado;
     int getTempoAtendimento();
@@ -22,6 +25,7 @@ public:
 private:
     QTime tempoAtendimento;
     QTime tempoSistema;
+    QTime momentoEntradaNoSistema;
 };
 
 #endif // CARRO_H

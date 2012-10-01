@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'configuracaoinicialdialog.ui'
 **
-** Created: Sun Sep 30 16:16:25 2012
+** Created: Mon Oct 1 00:11:26 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -19,12 +19,10 @@
 #include <QtGui/QDialog>
 #include <QtGui/QDialogButtonBox>
 #include <QtGui/QFormLayout>
-#include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QSlider>
 #include <QtGui/QSpinBox>
 #include <QtGui/QVBoxLayout>
 
@@ -33,7 +31,7 @@ QT_BEGIN_NAMESPACE
 class Ui_ConfiguracaoInicialDialog
 {
 public:
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QGroupBox *groupBoxTs;
     QFormLayout *formLayout;
@@ -57,10 +55,11 @@ public:
     QSpinBox *spinBoxTecParametro3;
     QHBoxLayout *horizontalLayout_2;
     QGroupBox *groupBoxAnimacao;
-    QGridLayout *gridLayout;
+    QFormLayout *formLayout_3;
     QLabel *labelTempoSimulacao;
     QSpinBox *spinBoxTempoSimulacao;
-    QSlider *horizontalSlider;
+    QLabel *label;
+    QComboBox *comboBoxRapidez;
     QGroupBox *groupBoxFila;
     QFormLayout *formLayout_4;
     QCheckBox *checkBoxFilaLimitada;
@@ -71,9 +70,9 @@ public:
     {
         if (ConfiguracaoInicialDialog->objectName().isEmpty())
             ConfiguracaoInicialDialog->setObjectName(QString::fromUtf8("ConfiguracaoInicialDialog"));
-        ConfiguracaoInicialDialog->resize(492, 279);
-        verticalLayout_2 = new QVBoxLayout(ConfiguracaoInicialDialog);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        ConfiguracaoInicialDialog->resize(492, 275);
+        verticalLayout = new QVBoxLayout(ConfiguracaoInicialDialog);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         groupBoxTs = new QGroupBox(ConfiguracaoInicialDialog);
@@ -171,37 +170,35 @@ public:
         horizontalLayout->addWidget(groupBoxTec);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
+        verticalLayout->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         groupBoxAnimacao = new QGroupBox(ConfiguracaoInicialDialog);
         groupBoxAnimacao->setObjectName(QString::fromUtf8("groupBoxAnimacao"));
-        gridLayout = new QGridLayout(groupBoxAnimacao);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        formLayout_3 = new QFormLayout(groupBoxAnimacao);
+        formLayout_3->setObjectName(QString::fromUtf8("formLayout_3"));
         labelTempoSimulacao = new QLabel(groupBoxAnimacao);
         labelTempoSimulacao->setObjectName(QString::fromUtf8("labelTempoSimulacao"));
 
-        gridLayout->addWidget(labelTempoSimulacao, 0, 0, 1, 1);
+        formLayout_3->setWidget(0, QFormLayout::LabelRole, labelTempoSimulacao);
 
         spinBoxTempoSimulacao = new QSpinBox(groupBoxAnimacao);
         spinBoxTempoSimulacao->setObjectName(QString::fromUtf8("spinBoxTempoSimulacao"));
         spinBoxTempoSimulacao->setMaximum(9999999);
         spinBoxTempoSimulacao->setValue(30);
 
-        gridLayout->addWidget(spinBoxTempoSimulacao, 0, 1, 1, 1);
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, spinBoxTempoSimulacao);
 
-        horizontalSlider = new QSlider(groupBoxAnimacao);
-        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
-        horizontalSlider->setMinimum(1);
-        horizontalSlider->setMaximum(20);
-        horizontalSlider->setPageStep(1);
-        horizontalSlider->setValue(10);
-        horizontalSlider->setOrientation(Qt::Horizontal);
-        horizontalSlider->setTickPosition(QSlider::TicksBelow);
-        horizontalSlider->setTickInterval(10);
+        label = new QLabel(groupBoxAnimacao);
+        label->setObjectName(QString::fromUtf8("label"));
 
-        gridLayout->addWidget(horizontalSlider, 1, 0, 1, 2);
+        formLayout_3->setWidget(1, QFormLayout::LabelRole, label);
+
+        comboBoxRapidez = new QComboBox(groupBoxAnimacao);
+        comboBoxRapidez->setObjectName(QString::fromUtf8("comboBoxRapidez"));
+
+        formLayout_3->setWidget(1, QFormLayout::FieldRole, comboBoxRapidez);
 
 
         horizontalLayout_2->addWidget(groupBoxAnimacao);
@@ -226,14 +223,14 @@ public:
         horizontalLayout_2->addWidget(groupBoxFila);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        verticalLayout->addLayout(horizontalLayout_2);
 
         buttonBox = new QDialogButtonBox(ConfiguracaoInicialDialog);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Ok);
 
-        verticalLayout_2->addWidget(buttonBox);
+        verticalLayout->addWidget(buttonBox);
 
 #ifndef QT_NO_SHORTCUT
         labelTsDistribuicao->setBuddy(comboBoxTsDistribuicao);
@@ -262,6 +259,9 @@ public:
         QObject::connect(buttonBox, SIGNAL(accepted()), ConfiguracaoInicialDialog, SLOT(accept()));
         QObject::connect(buttonBox, SIGNAL(rejected()), ConfiguracaoInicialDialog, SLOT(reject()));
         QObject::connect(checkBoxFilaLimitada, SIGNAL(clicked(bool)), spinBoxLimiteFila, SLOT(setEnabled(bool)));
+
+        comboBoxRapidez->setCurrentIndex(2);
+
 
         QMetaObject::connectSlotsByName(ConfiguracaoInicialDialog);
     } // setupUi
@@ -300,6 +300,15 @@ public:
         groupBoxAnimacao->setTitle(QApplication::translate("ConfiguracaoInicialDialog", "Anima\303\247\303\243o", 0, QApplication::UnicodeUTF8));
         labelTempoSimulacao->setText(QApplication::translate("ConfiguracaoInicialDialog", "&tempo de simula\303\247\303\243o", 0, QApplication::UnicodeUTF8));
         spinBoxTempoSimulacao->setSuffix(QApplication::translate("ConfiguracaoInicialDialog", " s", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("ConfiguracaoInicialDialog", "rapidez", 0, QApplication::UnicodeUTF8));
+        comboBoxRapidez->clear();
+        comboBoxRapidez->insertItems(0, QStringList()
+         << QApplication::translate("ConfiguracaoInicialDialog", "1:3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("ConfiguracaoInicialDialog", "1:2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("ConfiguracaoInicialDialog", "1:1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("ConfiguracaoInicialDialog", "2:1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("ConfiguracaoInicialDialog", "3:1", 0, QApplication::UnicodeUTF8)
+        );
         groupBoxFila->setTitle(QApplication::translate("ConfiguracaoInicialDialog", "Fila", 0, QApplication::UnicodeUTF8));
         checkBoxFilaLimitada->setText(QApplication::translate("ConfiguracaoInicialDialog", "fila limitada", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

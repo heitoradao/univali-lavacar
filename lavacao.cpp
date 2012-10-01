@@ -81,7 +81,7 @@ void Lavacao::encerraSimulacao()
     ativa = false;
     porta->encerraSimulacao();
     atendente->encerraSimulacao();
-	mostraRelatorio();
+    //mostraRelatorio();
 }
 
 QRectF Lavacao::boundingRect() const

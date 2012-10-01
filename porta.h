@@ -28,6 +28,7 @@ private slots:
 
 private:
     bool ativa;
+    QTime tempoReferencia;
     QTimer timer;
 	int numCarrosGerados;
     QTextStream *output;

@@ -1,8 +1,9 @@
 #include "carro.h"
 
-Carro::Carro(QObject *parent)
+Carro::Carro(QTime momentoEntradaNoSistema, QObject *parent)
     :QObject(parent)
     ,estado(EstadoSujo)
+    ,momentoEntradaNoSistema(momentoEntradaNoSistema)
 {
     tempoSistema.start();
     tempoAtendimento.start();

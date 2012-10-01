@@ -51,7 +51,14 @@ void ConfiguracaoInicialDialog::done(int r)
 
     config.filaLimitada = ui->checkBoxFilaLimitada->isChecked();
     config.limiteFila = ui->spinBoxLimiteFila->value();
-    config.rapidezAnimacao = ui->horizontalSlider->value() / 10.0;
+
+    if (ui->comboBoxRapidez->currentIndex() == 0)
+        config.rapidezAnimacao = 0.33;
+    else if (ui->comboBoxRapidez->currentIndex() == 1)
+        config.rapidezAnimacao = 0.5;
+    else if (ui->comboBoxRapidez->currentIndex() >= 2)
+        config.rapidezAnimacao = ui->comboBoxRapidez->currentIndex() - 1;
+
 
     if (!camposValidos()) {
         QMessageBox::critical(this, "", trUtf8("os valores dos campos estão inválidos.\n"
